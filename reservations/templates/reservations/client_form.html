@@ -1,0 +1,41 @@
+{% extends 'reservations/base.html' %}
+
+{% block title %}Crear/Actualizar Cliente{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">{{ form.instance.pk|yesno:"Editar Cliente,Crear Cliente" }}</h1>
+    <div class="card shadow">
+        <div class="card-header text-white" style="background-color: rgb(109, 109, 109);">
+            <h4 class="mb-0">Información del Cliente</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.nombre.id_for_label }}">Nombre</label>
+                    {{ form.nombre }}
+                    {% if form.nombre.errors %}
+                        <div class="text-danger">
+                            {{ form.nombre.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">Email</label>
+                    {{ form.email }} 
+                    {% if form.email.errors %}
+                        <div class="text-danger">
+                            {{ form.email.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                    <a href="{% url 'client_list' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

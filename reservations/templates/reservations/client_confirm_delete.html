@@ -1,0 +1,23 @@
+{% extends 'reservations/base.html' %}
+
+{% block title %}Eliminar Cliente{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Eliminar Cliente</h1>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="mb-0">Estas seguro de eliminar al Cliente: "{{ client.nombre }}"?</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-danger btn-lg">Eliminar</button>
+                    <a href="{% url 'client_list' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

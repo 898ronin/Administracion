@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <title>{% block title %}Gestor de Propiedades{% endblock %}</title>
+    <style>
+        html, body {
+            background-color: #f2f2f2;
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+           
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            flex: 1; /* Permitir que el contenedor crezca y ocupe espacio disponible */
+            margin-top: 20px;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'index' %}">Gestor de Propiedades</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create_client' %}">Añadir Cliente</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'client_list' %}">Lista de Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create_reservation' %}">Añadir Reservación</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'reservation_list' %}">Lista de Reservaciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'department_list' %}">Lista de Propiedades</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Gestor de Propiedades. Todos los derechos reservados.</p>
+        <div class="social-icons mb-0">
+            <a href="https://www.facebook.com" class="text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com" class="text-white"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/ronin._dev/" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

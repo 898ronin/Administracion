@@ -1,0 +1,54 @@
+{% extends 'reservations/base.html' %}
+
+{% block title %}Formulario de Departamento{% endblock %}
+
+{% block content %}
+
+<style>
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        box-sizing: border-box;
+    }
+</style>
+
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Propiedad</h1>
+    
+    <div class="card">
+        <div class="card-header text-white" style=" background-color: rgb(109, 109, 109);">
+            <h4 class="mb-0 text-center">{% if form.instance.pk %}Editar Propiedad{% else %}Crear Nueva Propiedad{% endif %}</h4>
+        </div>
+        
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                    <a href="{% url 'department_list' %}" class="btn btn-secondary btn-lg ml-2">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

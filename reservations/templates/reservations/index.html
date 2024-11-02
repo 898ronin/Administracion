@@ -1,0 +1,28 @@
+{% extends 'reservations/base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center" style="background-color: #f8f9fa; margin-top: 70px;">
+    <h1 class="display-4">Bienvenido al Panel de Administración</h1>
+    <p class="lead">Maneja las Reservaciones, Clientes, y Propiedades de manera eficiente.</p>
+    <hr class="my-4">
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{% url 'create_client' %}" role="button">Añadir Cliente</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'create_reservation' %}" role="button">Añadir Reservación</a>
+        <a class="btn btn-success btn-lg" href="{% url 'client_list' %}" role="button">Lista de Clientes</a>
+        <a class="btn btn-success btn-lg" href="{% url 'reservation_list' %}" role="button">Lista de Reservaciones</a>
+        <a class="btn btn-success btn-lg" href="{% url 'department_list' %}" role="button">Lista de Propiedades</a>
+    </p>
+</div>
+
+
+<div class="container mt-5">
+    <h2 class="text-center">Consejos para la Administración</h2>
+    <ul class="list-group mt-4">
+        <li class="list-group-item">Asegúrate de verificar la disponibilidad antes de añadir una reservación.</li>
+        <li class="list-group-item">Mantén actualizada la información de los clientes y propiedades.</li>
+        <li class="list-group-item">Utiliza las listas para hacer un seguimiento de tus reservaciones y clientes.</li>
+    </ul>
+</div>
+{% endblock %}
